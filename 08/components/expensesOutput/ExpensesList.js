@@ -1,11 +1,18 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 
-const ExpensesList = () => {
+const renderExpenseItem = (itemData) => {
+	return <Text>{itemData.item.description}</Text>;
+};
+
+const ExpensesList = ({ expenses }) => {
 	return (
-		<View>
-			<Text>Period</Text>
-			<Text>$sum</Text>
-		</View>
+		<FlatList
+			data={expenses}
+			renderItem={renderExpenseItem}
+			keyExtractor={(item) => {
+				item.id;
+			}}
+		/>
 	);
 };
 
